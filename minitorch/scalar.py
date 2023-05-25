@@ -163,8 +163,14 @@ class Scalar:
         assert h.last_fn is not None
         assert h.ctx is not None
 
-        # TODO: Implement for Task 1.3.
-        raise NotImplementedError('Need to implement for Task 1.3')
+        # TODO: The spec says: This function should be able to backward process a function by passing it in a context
+        #  and d_output and then collecting the local derivatives. It should then pair these with the right variables
+        #  and return them. This function is also where we filter out constants that were used on the forward pass, but
+        #  do not need derivatives.
+        #  However, we don't do anything about constants here. The tests don't enforce anything either.
+        ds = h.last_fn.backward(h.ctx, d_output)
+        return [(v, d) for v, d in zip(self.parents, ds)]
+
 
     def backward(self, d_output: Optional[float] = None) -> None:
         """
