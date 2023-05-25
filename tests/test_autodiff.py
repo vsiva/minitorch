@@ -98,6 +98,21 @@ def test_chain_rule4() -> None:
 
 # ## Task 1.4 - Run some simple backprop tests
 
+
+def test_topo_sort():
+    from minitorch import topological_sort
+
+    x5 = minitorch.Scalar(5.0)
+    x7 = minitorch.Scalar(7.0)
+    x11 = minitorch.Scalar(
+        11.0, ScalarHistory(Function1, ctx=Context(), inputs=[x5, x7])
+    )
+    x2 = minitorch.Scalar(
+        2.0, ScalarHistory(Function1, ctx=Context(), inputs=[x11, x11])
+    )
+    print(topological_sort(x2))
+
+
 # Main tests are in test_scalar.py
 
 
