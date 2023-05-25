@@ -3,7 +3,7 @@ Collection of the core mathematical operators used throughout the code base.
 """
 
 import math
-from typing import Callable, Iterable
+from typing import Callable, Iterable, Tuple
 
 # ## Task 0.1
 #
@@ -13,6 +13,10 @@ from typing import Callable, Iterable
 def mul(x: float, y: float) -> float:
     "$f(x, y) = x * y$"
     return x * y
+
+
+def mul_back(x: float, y: float, d: float) -> Tuple[float, float]:
+    return y * d, x * d
 
 
 def id(x: float) -> float:

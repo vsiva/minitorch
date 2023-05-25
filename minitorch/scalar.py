@@ -168,7 +168,7 @@ class Scalar:
         #  and return them. This function is also where we filter out constants that were used on the forward pass, but
         #  do not need derivatives.
         #  However, we don't do anything about constants here. The tests don't enforce anything either.
-        ds = h.last_fn.backward(h.ctx, d_output)
+        ds = h.last_fn._backward(h.ctx, d_output)
         return [(v, d) for v, d in zip(self.parents, ds)]
 
 

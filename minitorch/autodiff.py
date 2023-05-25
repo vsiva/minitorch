@@ -94,10 +94,6 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
     """
     nodes = topological_sort(variable)
 
-    # zero out all grads first
-    for n in nodes:
-        n.derivative = None
-
     # start from the end node and propagate derivatives
     derivatives = {variable.unique_id: deriv}
     for n in nodes:
